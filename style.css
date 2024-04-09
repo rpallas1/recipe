@@ -1,0 +1,671 @@
+:root {
+    --dark-grey: #0d0d0d;
+    --light-grey: #f2f2f2;
+    --dark-teal: #7abfbf;
+    --light-teal: rgba(122, 191, 191, .5);
+    --orange: #eb5428;
+    --sml-width: 414px;
+    --med-width: 768px;
+    --lg-width: 1280px;
+}
+
+/* ---- GLOBAL STYLES ---- */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: var(--light-teal);
+}
+
+body {
+    margin: 0 auto;
+    background-color: var(--light-grey);
+    width: var(--sml-width);
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, auto);
+}
+
+h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 25px;
+}
+
+nav a, nav span, menu li, #social li, small {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+}
+
+ul, menu {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--orange);
+}
+
+p, dd, dt, li, nav, input {
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+}
+
+p, ol li {
+    line-height: 25px;
+}
+
+dt {
+    font-weight: 700;
+}
+
+menu {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px; 
+}
+
+/* Icon and image links and footer copyright */
+menu a, nav a, nav label:first-of-type,
+footer section:last-of-type {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+menu a:focus, nav a:focus {
+    outline: 2px solid var(--orange);
+    border-radius: 10px;
+}
+
+menu a:hover, nav a:hover:not(nav li:first-of-type a) {
+    transform: scale(1.1);
+}
+
+menu a:active, nav a:active {
+    transform: scale(1);
+}
+
+
+/* ---- HEADER STYLES ---- */
+header {
+    padding-top: 175px;
+}
+
+h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    text-align: center;
+    padding: 10px;
+}
+
+header img {
+    width: 100%;
+}
+
+header p {
+    padding: 10px;
+}
+
+
+/* ---- MAIN STYLES ---- */
+main {
+    scroll-margin-top: 200px;
+}
+
+main h2 {
+    padding: 10px 0;
+}
+
+
+/* START DETAILS SECTION STYLES */
+main dl {
+    padding: 0 10px;
+}
+
+main dl div {
+    display: flex;
+}
+
+main dd {
+    padding: 0 0 5px 10px;
+}
+/* END DETAILS SECTION STYLES */
+
+
+/* START INGREDIENTS AND DIRECTIONS SECTION STYLES */
+main section ul, main section ol {
+    padding-left: 25px;
+}
+
+main section li {
+    padding: 10px;
+}
+
+main section:nth-of-type(2) ul {
+    list-style: square;
+}
+/* END INGREDIENTS AND DIRECTIONS SECTION STYLES */
+
+
+/* ---- ASIDE STYLES ---- */
+aside {
+    background-color: var(--dark-teal);
+    padding: 10px 10px 0 10px;
+}
+
+aside section {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    grid-template-rows: repeat(3, auto);
+    margin: 30px 0;
+}
+
+aside section:last-of-type {
+    margin-bottom: 0;
+}
+
+aside img {
+    width: 100px;
+    grid-row: 1 / -1;
+}
+
+aside p {
+    padding: 10px 0 5px 0;
+}
+
+.icon-tabler-star {
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.5px;
+    stroke: white;
+    fill: var(--orange);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    margin-left: -10px;
+    padding: 2px 5px 0;
+}
+
+.icon-tabler-star:last-of-type:not(aside section:nth-of-type(2) .icon-tabler-star:last-of-type) {
+    stroke: white;
+    fill: white;
+}
+
+
+/* ---- NAV STYLES ---- */
+nav {
+    grid-row: 1 / 2;
+    position: relative;
+}
+
+nav div:first-of-type {
+    position: fixed;
+    top: 0;
+    width: var(--sml-width);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.2);
+    background-color: white;
+    z-index: 500;
+}
+
+nav h2 {
+    visibility: hidden;
+    height: 0;
+}
+
+nav input:first-of-type {
+    display: none;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    justify-content: space-around;
+    max-height: 0;
+    transition: max-height .2s ease-out;
+    margin-top: 80px;
+}
+
+nav li {
+    padding: 10px 20px;
+}
+
+nav li img {
+    width: 60px;
+    padding-bottom: 5px;
+}
+
+/* Menu link */
+nav label:first-of-type {
+    grid-column: 1 / 2;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+
+/* Home link` */
+nav li:first-of-type {
+    position: absolute;
+    top: 0;
+    padding: 0;
+}
+
+nav li:first-of-type span {
+    visibility: hidden;
+    height: 0;
+}
+
+nav li:first-of-type svg {
+    stroke: white;
+    background-color: var(--orange);
+    padding: 10px 90px;
+}
+
+/* Sign in link */
+nav li:last-of-type {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0;
+}
+
+nav li:last-of-type span {
+    color: black;
+}
+
+input:checked ~ ul {
+    max-height: 210px;
+}
+
+/* START SEARCH BAR STYLES */
+nav div:last-of-type {
+    position: absolute;
+    top: 115px;
+    right: 50px;
+    display: flex;
+    align-items: center;
+}
+
+nav div:last-of-type label {
+    visibility: hidden;
+    height: 0;
+}
+
+nav div:last-of-type input {
+   display: inline-block;
+   border: 2px solid var(--orange);
+   width: 260px;
+   height: 50px;
+}
+
+nav div:last-of-type input {
+    padding-left: 3px;
+}
+
+nav div button {
+    background-color: var(--orange);
+    border: none;
+    width: 55px;
+    height: 50px;
+    cursor: pointer;
+}
+/* END SEARCH BAR STYLES */
+
+
+/* ---- FOOTER STYLES ---- */
+footer {
+    margin-top: 20px;
+    padding-top: 30px;
+    background-color: #fff;
+}
+
+footer h2, footer h3 {
+    visibility: hidden;
+    height: 0;
+}
+
+footer section:last-of-type img  {
+    width: 180px;
+    margin-bottom: 20px;
+}
+
+footer p {
+    text-align: center;
+}
+
+
+/* ---- MEDIUM SCREEN STYLES ---- */
+@media screen and (min-width: 768px) {
+    body {
+        width: var(--med-width);
+    }
+
+
+/* ---- HEADER STYLES ---- */
+    header {
+        display: flex;
+        flex-direction: column;
+        padding-top: 210px;
+    }
+
+    h1 {
+        align-self: flex-start;
+        padding-left: 20px;
+    }
+
+    /* Menu links and image */
+    header div:first-of-type {
+        position: relative;
+    }
+
+    header menu {
+        background-color: rgba(255,255,255,0.7);
+        padding: 15px 0;
+        position: absolute;
+        width: var(--med-width);
+    }
+
+    #to-recipe  {
+        display: none;
+    }
+
+
+/* ---- MAIN STYLES ---- */
+    main {
+        display: grid;
+        grid-template-columns: 220px repeat(3, 1fr);
+    }
+
+    /* Details section */
+    main section:nth-of-type(1) {
+        grid-column: 1 / -1;
+        justify-self: center;
+    }
+
+    main dl div {
+        justify-content: space-evenly;
+    }
+
+    /* Ingredients section */
+    main section:nth-of-type(2) {
+        grid-row: 2 / 3;
+    }
+
+
+    /* Directions section */
+    main section:nth-of-type(3) {
+        grid-column: 2 / -1;
+    }
+
+    main section:nth-of-type(3) li {
+        padding: 15px 10px;
+    }
+
+
+/* ---- ASIDE STYLES ---- */
+    aside {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding-left: 0;
+    }
+
+    aside section, aside section:last-of-type {
+        margin: 20px 0 30px;
+    }
+
+    aside h2 {
+        grid-column: 1 / -1;
+    }
+
+    aside dl {
+        display: flex;
+        align-items: center;
+    }
+
+    aside dd {
+        margin-left: 10px;
+    }
+
+/* ---- NAV STYLES ---- */
+    nav {
+        position: fixed;
+    }
+
+    nav ul {
+        overflow: visible;
+        width: var(--med-width);
+        align-items: flex-end;
+        flex-wrap: nowrap;
+        margin-top: 200px;
+    }
+
+    nav div:first-of-type label,
+    nav div:first-of-type input {
+        display: none;
+    }
+
+    /* Main navigation links */
+    nav div:first-of-type {
+        width: var(--med-width);
+        position: relative;
+    }
+
+    /* Home link */
+    nav li:first-of-type {
+        left: 0;
+    }
+
+    nav li:first-of-type svg {
+        padding: 10px;
+    }
+
+
+    /* Sign in link */
+    nav li:last-of-type {
+        top: 15px;
+        right: 20px;
+    }
+
+    nav li:last-of-type span span {
+        display: none;
+    }
+
+    /* Search bar */
+    nav div:last-of-type {
+        position: absolute;
+        top: 20px;
+        right: 110px;
+        z-index: 500;
+    }
+
+
+/* ---- FOOTER STYLES ---- */
+    footer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 0;
+        padding-bottom: 20px;
+        padding: 30px 0 20px 10px;
+    }
+
+    /* Social media links */
+    footer section:first-of-type {
+        grid-row: 1 / 2;
+    }
+
+    /* Copyright section */
+    footer section:last-of-type {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+}
+
+
+/* ---- LARGE SCREEN STYLES ---- */
+@media screen and (min-width: 1280px) {
+    body {
+        width: var(--lg-width);
+    }
+
+
+/* ---- HEADER STYLES ---- */
+    header {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    header h1 {
+        grid-column: 1 / -1;
+    }
+
+    header menu {
+        width: 107px;
+        height: 760px;
+        background-color: white;
+        border: 2px solid var(--orange);
+        position: relative;
+    }
+
+    /* Menu links and image */
+    header div:first-of-type {
+        grid-row: 2 / 3;
+        display: grid;
+        grid-template-columns: auto 1fr;
+    }
+
+    header menu {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    header menu li {
+        padding: 15px 0;
+    }
+
+
+/* ---- MAIN STYLES ---- */
+    /* Details section */
+    main section:first-of-type {
+        background-color: black;
+        color: var(--dark-teal);
+        width: 100%;
+    }
+
+    main section:first-of-type dl {
+        display: flex;
+        padding: 0 0 10px 10px;
+        justify-content: space-around;
+    }
+
+    main dl div {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    main dd {
+        padding: 0;
+    }
+
+    /* Directions section */
+    main section:last-of-type {
+        padding-left: 40px;
+    }
+
+
+/* ---- ASIDE STYLES ---- */
+    aside {
+        grid-template-columns: repeat(4, 1fr);
+        padding-right: 0;
+        justify-items: center;
+    }
+
+    aside section, aside section:last-of-type {
+        grid-template-columns: 250px;
+        margin-bottom: 0;
+        padding-bottom: 30px;
+    }
+
+    aside :is(h3, dl, p) {
+        padding-left: 10px;
+    }
+
+    aside h3 {
+        padding-top: 15px;
+    }
+
+    aside img {
+        grid-row: 1 / 2;
+        width: 250px;
+    }
+
+    aside p {
+        padding-right: 20px;
+    }
+
+
+/* ---- NAV STYLES ---- */
+    nav {
+        position: relative;
+    }
+
+    /* Main navigation links */
+    nav div:first-of-type {
+        width: var(--lg-width);
+        height: 100px;
+        padding: 15px 0 10px 0;
+        position: fixed;
+    }
+
+    nav ul {
+        margin: 0 auto;
+        margin-top: 100px;
+    }
+
+    /* Home link */
+    nav li:first-of-type svg {
+        padding: 33px 25px;
+    }
+
+    /* Sign in link */
+    nav li:last-of-type {
+        top: 30px;
+        right: 40px;
+    }
+
+    /* Search bar */
+    nav div:last-of-type {
+        position: absolute;
+        top: 150px;
+        right: 470px;
+        z-index: 200;
+    }
+
+
+/* ---- FOOTER STYLES ---- */
+    footer {
+        padding-bottom: 0;
+    }
+
+    footer section:last-of-type {
+        justify-self: start;
+        flex-direction: row-reverse;
+    }
+
+    footer section:last-of-type p {
+        align-self: flex-start;
+        margin-top: 20px;
+    }
+}
+
+
+/* ---- PRINTER STYLES ---- */
