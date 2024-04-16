@@ -17,6 +17,7 @@
 
 html {
     background-color: var(--light-teal);
+    box-sizing: border-box;
 }
 
 body {
@@ -73,25 +74,29 @@ menu {
     padding: 10px; 
 }
 
-/* Icon and image links and footer copyright */
+/* Icons. image links, and footer copyright */
 menu a, nav a, nav label:first-of-type,
-footer section:last-of-type {
+footer section section:last-of-type {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+}   
+
+nav a, menu a {
+    border-bottom: 3px solid rgba(0, 0, 0, 0);
 }
 
 menu a:focus, nav a:focus {
-    outline: 2px solid var(--orange);
-    border-radius: 10px;
+    outline: none;
+    border-bottom: 3px solid var(--orange);
 }
 
-menu a:hover, nav a:hover:not(nav li:first-of-type a) {
-    transform: scale(1.1);
+menu a:hover, nav a:hover:not(nav li:first-of-type a), nav div:first-of-type label:hover {
+    transform: translateY(-5px);
 }
 
 menu a:active, nav a:active {
-    transform: scale(1);
+    border-bottom: 3px solid var(--orange);
 }
 
 
@@ -118,7 +123,7 @@ header p {
 
 /* ---- MAIN STYLES ---- */
 main {
-    scroll-margin-top: 200px;
+    scroll-margin-top: 80px;
 }
 
 main h2 {
@@ -220,7 +225,7 @@ nav h2 {
     height: 0;
 }
 
-nav input:first-of-type {
+nav div:first-of-type input {
     display: none;
 }
 
@@ -230,17 +235,21 @@ nav ul {
     overflow: hidden;
     justify-content: space-around;
     max-height: 0;
-    transition: max-height .2s ease-out;
+    transition: max-height .3s ease-in-out;
     margin-top: 80px;
 }
 
 nav li {
-    padding: 10px 20px;
+    padding: 20px 20px 10px;
 }
 
 nav li img {
     width: 60px;
     padding-bottom: 5px;
+}
+
+nav li:first-of-type a {
+    border-bottom: none;
 }
 
 /* Menu link */
@@ -251,7 +260,6 @@ nav label:first-of-type {
     top: 10px;
     left: 20px;
 }
-
 
 /* Home link` */
 nav li:first-of-type {
@@ -284,8 +292,9 @@ nav li:last-of-type span {
 }
 
 input:checked ~ ul {
-    max-height: 210px;
+    max-height: 250px;
 }
+
 
 /* START SEARCH BAR STYLES */
 nav div:last-of-type {
@@ -306,10 +315,20 @@ nav div:last-of-type input {
    border: 2px solid var(--orange);
    width: 260px;
    height: 50px;
+   padding-left: 3px;
 }
 
-nav div:last-of-type input {
-    padding-left: 3px;
+nav li:first-of-type a:focus, nav div:last-of-type button:focus {
+    outline: 2px solid var(--dark-teal);
+}
+
+nav li:first-of-type a:active, nav div:last-of-type button:active {
+    transform: scale(0.95);
+}
+
+nav div:last-of-type input:focus {
+    outline: none;
+    border: 2px solid var(--dark-teal);
 }
 
 nav div button {
@@ -324,8 +343,6 @@ nav div button {
 
 /* ---- FOOTER STYLES ---- */
 footer {
-    margin-top: 20px;
-    padding-top: 30px;
     background-color: #fff;
 }
 
@@ -335,19 +352,29 @@ footer h2, footer h3 {
 }
 
 footer section:last-of-type img  {
-    width: 180px;
-    margin-bottom: 20px;
+    width: 200px;
 }
 
 footer p {
     text-align: center;
+    padding-top: 20px;
 }
 
 
 /* ---- MEDIUM SCREEN STYLES ---- */
 @media screen and (min-width: 768px) {
+/* ---- GLOBAL STYLES ---- */
     body {
         width: var(--med-width);
+    }
+
+    nav div:first-of-type label,
+    nav div:first-of-type input,
+    #to-recipe,
+    nav li:last-of-type span span {
+        visibility: hidden;
+        height: 1px;
+        position: absolute;
     }
 
 
@@ -355,7 +382,8 @@ footer p {
     header {
         display: flex;
         flex-direction: column;
-        padding-top: 210px;
+        padding-top: 0;
+        margin-top: 210px;
     }
 
     h1 {
@@ -375,15 +403,12 @@ footer p {
         width: var(--med-width);
     }
 
-    #to-recipe  {
-        display: none;
-    }
-
 
 /* ---- MAIN STYLES ---- */
     main {
         display: grid;
         grid-template-columns: 220px repeat(3, 1fr);
+        scroll-margin-top: 200px;
     }
 
     /* Details section */
@@ -400,7 +425,6 @@ footer p {
     main section:nth-of-type(2) {
         grid-row: 2 / 3;
     }
-
 
     /* Directions section */
     main section:nth-of-type(3) {
@@ -436,6 +460,7 @@ footer p {
         margin-left: 10px;
     }
 
+
 /* ---- NAV STYLES ---- */
     nav {
         position: fixed;
@@ -447,11 +472,6 @@ footer p {
         align-items: flex-end;
         flex-wrap: nowrap;
         margin-top: 200px;
-    }
-
-    nav div:first-of-type label,
-    nav div:first-of-type input {
-        display: none;
     }
 
     /* Main navigation links */
@@ -469,15 +489,10 @@ footer p {
         padding: 10px;
     }
 
-
     /* Sign in link */
     nav li:last-of-type {
         top: 15px;
         right: 20px;
-    }
-
-    nav li:last-of-type span span {
-        display: none;
     }
 
     /* Search bar */
@@ -491,20 +506,21 @@ footer p {
 
 /* ---- FOOTER STYLES ---- */
     footer {
+        padding: 40px 0 35px ;
+    }
+
+    footer > section {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        margin-top: 0;
-        padding-bottom: 20px;
-        padding: 30px 0 20px 10px;
     }
 
     /* Social media links */
-    footer section:first-of-type {
+    footer section section:first-of-type {
         grid-row: 1 / 2;
     }
 
     /* Copyright section */
-    footer section:last-of-type {
+    footer section section:last-of-type {
         grid-column: 1 / 2;
         grid-row: 1 / 2;
     }
@@ -522,6 +538,8 @@ footer p {
     header {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        margin-top: 240px;
+
     }
 
     header h1 {
@@ -534,6 +552,10 @@ footer p {
         background-color: white;
         border: 2px solid var(--orange);
         position: relative;
+    }
+
+    header menu a {
+        margin: 0 20px;
     }
 
     /* Menu links and image */
@@ -554,6 +576,10 @@ footer p {
 
 
 /* ---- MAIN STYLES ---- */
+    main {
+        scroll-margin-top: 120px;
+    }
+
     /* Details section */
     main section:first-of-type {
         background-color: black;
@@ -627,8 +653,7 @@ footer p {
     }
 
     nav ul {
-        margin: 0 auto;
-        margin-top: 100px;
+        margin: 110px auto 0;
     }
 
     /* Home link */
@@ -645,7 +670,7 @@ footer p {
     /* Search bar */
     nav div:last-of-type {
         position: absolute;
-        top: 150px;
+        top: 180px;
         right: 470px;
         z-index: 200;
     }
@@ -653,15 +678,15 @@ footer p {
 
 /* ---- FOOTER STYLES ---- */
     footer {
-        padding-bottom: 0;
+        padding: 40px 0 35px 10px ;
     }
 
-    footer section:last-of-type {
+    footer section section:last-of-type {
         justify-self: start;
         flex-direction: row-reverse;
     }
 
-    footer section:last-of-type p {
+    footer section section:last-of-type p {
         align-self: flex-start;
         margin-top: 20px;
     }
@@ -669,3 +694,66 @@ footer p {
 
 
 /* ---- PRINTER STYLES ---- */
+@media print {
+/* ---- GLOBAL STYLES ---- */
+    html, body, aside {
+        background-color: white;
+    }
+
+    body {
+        width: fit-content;
+        margin: 0.5in;
+    }
+
+    h1, h2, h3, dd, dt, small,li, p {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    h3 {
+        font-size: 1em;
+    }
+
+    dd, dt, small, li, p {
+        font-size: 0.8em;
+    }
+
+    img {
+        filter: grayscale(1);
+    }
+
+    nav, menu, aside, footer img {
+        display: none;
+    }
+
+
+/* ---- HEADER STYLES ---- */
+    header {
+        padding-top: 0;
+        display: grid;
+        grid-template-columns: 200px 1fr;
+    }
+
+    h1 {
+        grid-column: 1 / -1;
+        padding: 0 0 10px 0;
+    }
+
+    header div:last-of-type p {
+        padding: 0 0 10px 20px;
+    }
+
+
+/* ---- MAIN STYLES ---- */
+    main, main section:nth-of-type(2) ul {
+        columns: 2;
+    }
+}
+
